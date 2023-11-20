@@ -2,6 +2,8 @@ from PyQt6.QtWidgets import QLabel, QLineEdit, QPushButton, QWidget, QMessageBox
 from metadatas import sessao, Pessoa, valida_cpf
 from modules.BuscaOlivro import BuscaOlivro
 from modules.JanelaCadastroPessoa import JanelaCadastroPessoa
+from modules import open_window
+
 
 class AlugaLivroCPF(QWidget):
     def __init__(self):
@@ -36,10 +38,9 @@ class AlugaLivroCPF(QWidget):
             QMessageBox.warning(self, "Aviso", "CPF INVÁLIDO")
             self.CaixaCPF.clear()
 
+    @open_window(JanelaCadastroPessoa)
     def fechar_abrir_janela_cadastro_pessoa(self):
         self.close()
-        self.janela_cadastro = JanelaCadastroPessoa()
-        self.janela_cadastro.show()
 
     def chamar_busca_livro(self, cpf):
         self.close()

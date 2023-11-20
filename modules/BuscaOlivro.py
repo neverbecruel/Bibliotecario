@@ -3,6 +3,7 @@ from PyQt6.QtWidgets import QCompleter, QMessageBox
 from PyQt6.QtCore import Qt
 from metadatas import sessao, Livro, RelacaoLeitura, Pessoa
 from modules.ListaLivrosPorAutor import ListaLivrosPorAutor
+from modules import open_window
 
 
 class BuscaOlivro(QMainWindow):

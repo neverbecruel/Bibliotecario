@@ -11,15 +11,7 @@ from modules.JanelaCadastroPessoa import JanelaCadastroPessoa
 from modules.CadastroLivros import CadastroLivros
 from modules.AlugaLivroCPF import AlugaLivroCPF
 from modules.BuscaOlivro import BuscaOlivro
-
-def open_window(window_class):
-    def decorator(func):
-        def wrapper(self):
-            self.new_window = window_class()
-            self.new_window.show()
-            func(self)
-        return wrapper
-    return decorator
+from modules import open_window
 
 
 class MainWindow(QMainWindow):
@@ -62,20 +54,19 @@ class MainWindow(QMainWindow):
     def devolves(self):
         pass
 
-
     def preencher_lista_de_livros(self, livros):
         for livro in livros:
             item = QListWidgetItem(f"{livro.titulo} - Nota: {livro.nota}")
             self.lista_livros.addItem(item)
 
+    @open_window(JanelaCadastroPessoa)
     def cadastrar_leitor(self):
-        self.pessoacadastro = JanelaCadastroPessoa()
-        self.pessoacadastro.show()
+        pass
 
+    @open_window(CadastroLivros)
     def cadastrar_livro(self):
-        self.janelacadlivro = CadastroLivros()
-        self.janelacadlivro.show()
+        pass
 
+    @open_window(AlugaLivroCPF)
     def alugar(self):
-        self.chama = AlugaLivroCPF()
-        self.chama.show()
+        pass
